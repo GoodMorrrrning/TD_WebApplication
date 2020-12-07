@@ -26,6 +26,7 @@ namespace TD_WebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
             services.AddRazorPages();
             services.AddTransient<IEtudiantServices, EtudiantsServicess>();
             services.AddTransient<IProxy, Proxy>();

@@ -21,9 +21,9 @@ namespace TD_WebApplication.Helper
         private HttpClient _client = new HttpClient();
         private IHttpContextAccessor _context;
         
-        public Proxy()
+        public Proxy(IHttpContextAccessor ctx)
         {
-          
+            _context = ctx;
         }
 
         
@@ -41,7 +41,7 @@ namespace TD_WebApplication.Helper
 
             
 
-            var data = await _client.GetStringAsync("https://localhost:44375/api/etudiants");
+            var data = await _client.GetStringAsync(Urlbuilder.Uri);
             var ed = JsonSerializer.Deserialize<List<T>>(data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             return ed;
         }
