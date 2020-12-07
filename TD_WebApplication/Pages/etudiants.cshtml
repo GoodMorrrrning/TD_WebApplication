@@ -4,3 +4,25 @@
     ViewData["title"] = "privacy policy";
 }
 <h1>Liste des étudiants</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ListeEtudiants)
+        { 
+            <tr>
+                <td>
+                    @item.Nom
+                </td>
+				<td>
+					@item.Prenom
+				</td>
+            </tr>
+        }
+    </tbody>
+
+</table>

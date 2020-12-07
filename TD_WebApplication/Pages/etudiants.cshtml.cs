@@ -11,10 +11,18 @@ namespace TD_WebApplication.Pages
     public class etudiantsModel : PageModel
     {
         public string coucou { get; set; }
-        public List<EtudiantDTO> ListeEtudiants = new List<EtudiantDTO>();
+        public List<EtudiantDTO> ListeEtudiants {get;set;}
         public void OnGet()
         {
-            coucou = "coucou";
+           
+            ListeEtudiants = new List<EtudiantDTO>();
+            
+            ListeEtudiants.Add(new EtudiantDTO { ID = 1, Nom="Jean", Prenom="Michel"});
+            ListeEtudiants.Add(new EtudiantDTO { ID = 1, Nom="Jack", Prenom="Valentine"});
+            ListeEtudiants.Add(new EtudiantDTO { ID = 1, Nom="Georges", Prenom="welles"});
+            ListeEtudiants.Add(new EtudiantDTO { ID = 1, Nom="Charlie", Prenom="Heaton"});
+            
+
         }
     }
 }
