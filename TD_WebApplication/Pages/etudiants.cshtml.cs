@@ -9,8 +9,10 @@ namespace TD_WebApplication.Pages
 {
     public class etudiantsModel : PageModel
     {
+        public string coucou { get; set; }
         public void OnGet()
         {
+            coucou = "coucou";
         }
     }
 }
