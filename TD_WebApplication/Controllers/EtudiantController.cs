@@ -21,7 +21,7 @@ namespace TD_WebApplication.Controllers
 
         public List<EtudiantDTO> GetEtudiantDTOs()
         {
-            var services = new EtudiantsServicess();
+           // var services = new EtudiantsServicess();
             return _service.GetEtudiantDTOs();
         }
 

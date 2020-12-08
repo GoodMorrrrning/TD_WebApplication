@@ -1,4 +1,6 @@
+
 using EtudiantsServices;
+using KeDalle;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +33,8 @@ namespace TD_WebApplication
             services.AddRazorPages();
             services.AddTransient<IEtudiantServices, EtudiantsServicess>();
             services.AddTransient<IProxy, Proxy>();
+            services.AddTransient<IEpsiContext, Context>();
+            services.AddTransient<IDevoirService, DevService>();
             
             
         }

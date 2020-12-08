@@ -1,0 +1,33 @@
+﻿@page
+@model TD_WebApplication.Pages.LesDevoirsModel
+@{
+    ViewData["title"] = "privacy policy";
+}
+
+<h1>Les jolis Petit devoir hihihihihi</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nom du devoir</th>
+            <th>Note du devoir</th>
+            <th>jsp nique</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DevoirDtos)
+        {
+            <tr>
+                <td>
+                    @item.NomDevoir
+                </td>
+                <td>
+                    @item.Note
+                </td>
+                <td>
+                    @item.ID
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

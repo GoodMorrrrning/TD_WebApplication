@@ -3,41 +3,22 @@ using KeDalle;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KeDalle.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20201208095115_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("KeDalle.Model.DEVOIRS", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("IDETUDIANT")
-                        .HasColumnType("int");
-
-                    b.Property<string>("NomDevoir")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Note")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("devs");
-                });
 
             modelBuilder.Entity("KeDalle.Model.Etudiant", b =>
                 {

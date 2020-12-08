@@ -4,9 +4,16 @@ using System;
 
 namespace KeDalle
 {
-    public class Context : DbContext
+    public interface IEpsiContext
+    {
+        DbSet<Etudiant> etudiants { get; set; }
+        DbSet<DEVOIRS> devs { get; set; }
+    }
+
+    public class Context : DbContext, IEpsiContext
     {
         public DbSet<Etudiant> etudiants { get; set; }
+        public DbSet<DEVOIRS> devs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

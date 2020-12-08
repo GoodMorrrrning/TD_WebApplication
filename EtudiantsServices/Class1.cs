@@ -1,7 +1,8 @@
 ﻿using EpsiDTO;
+using KeDalle;
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace EtudiantsServices
 {
@@ -12,16 +13,29 @@ namespace EtudiantsServices
 
     public class EtudiantsServicess : IEtudiantServices
     {
+        private IEpsiContext _context;
+        public EtudiantsServicess(IEpsiContext ctx)
+        {
+            _context = ctx;
+        }
+
         public List<EtudiantDTO> GetEtudiantDTOs()
         {
-            List<EtudiantDTO> etudiants = new List<EtudiantDTO>();
+            var etudiantDal = _context.etudiants.ToList();
 
-            etudiants.Add(new EtudiantDTO { ID = 1, Nom = "Jean", Prenom = "Michel" });
-            etudiants.Add(new EtudiantDTO { ID = 1, Nom = "Jack", Prenom = "Valentine" });
-            etudiants.Add(new EtudiantDTO { ID = 1, Nom = "Georges", Prenom = "welles" });
-            etudiants.Add(new EtudiantDTO { ID = 1, Nom = "Charlie", Prenom = "Heaton" });
-            return etudiants;
+            return etudiantDal.Select(e => new EtudiantDTO
+            {
+                ID = e.ID,
+                Nom = e.Nom,
+                Prenom = e.Prenom,
+                AGE = e.AGE
+
+            }).ToList();
+
+           
         }
 
     }
+
+    
 }

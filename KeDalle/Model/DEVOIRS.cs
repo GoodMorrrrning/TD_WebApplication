@@ -5,15 +5,12 @@ using System.Text;
 
 namespace KeDalle.Model
 {
-   public class Etudiant
+   public class DEVOIRS
     {
         [Key]
         public int ID { get; set; }
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
-
-        public int AGE { get; set; }
-
+        public int Note { get; set; }
+        public string NomDevoir { get; set; }
+        public int IDETUDIANT { get; set; }
     }
-
 }
