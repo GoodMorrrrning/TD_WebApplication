@@ -1,5 +1,6 @@
 ﻿using EpsiDTO;
 using KeDalle;
+using KeDalle.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,12 @@ namespace
 {
     public interface IDevoirService
     {
-        List<DevoirDto> GetDevoirDtos();
+        List<DevoirDto> GetDevoirs();
+        DEVOIRS getUndevoir(int id);
+        DEVOIRS AjouterUnDevoir(DEVOIRS devs);
+        DEVOIRS UpdateUnDevoir(DEVOIRS devs);
+        void DeleteUnDevoir(int id);
+
     }
     public class DevService : IDevoirService
     {
@@ -20,7 +26,19 @@ namespace
             _context = ctx;
         }
 
-        public List<DevoirDto> GetDevoirDtos()
+        public DEVOIRS AjouterUnDevoir(DEVOIRS devs)
+        {
+           if(devs.ID > 0)
+            {
+                throw new InvalidOperationException("existe deja");
+            }
+            _context.devs.Add(devs);
+            return devs;
+        }
+
+      
+
+        public List<DevoirDto> GetDevoirs()
         {
             var devoirdal = _context.devs.ToList();
 
@@ -36,5 +54,28 @@ namespace
 
         }
 
+        public DEVOIRS getUndevoir(int id)
+        {
+            var devoir = _context.devs.SingleOrDefault(e => e.ID == id);
+            if(devoir == null)
+            {
+                throw new InvalidOperationException("Le devoir avec l'id" + id + " existe pas");
+            }
+            return devoir;
+        }
+
+        public DEVOIRS UpdateUnDevoir(DEVOIRS devs)
+        {
+            var devoiraupdate = getUndevoir(devs.ID);
+            devoiraupdate.NomDevoir = devs.NomDevoir;
+            devoiraupdate.Note = devs.Note;
+            return devs;
+        }
+
+         public void DeleteUnDevoir(int id)
+        {
+            var devoir = getUndevoir(id);
+            _context.devs.Remove(devoir);
+        }
     }
 }

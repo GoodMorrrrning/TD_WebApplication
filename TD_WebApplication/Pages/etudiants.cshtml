@@ -3,6 +3,11 @@
 @{
     ViewData["title"] = "privacy policy";
 }
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editetudiant">
+    Ajouter Etudiant
+</button>
+
 <h1>Liste des étudiants</h1>
 <table>
     <thead>
@@ -12,6 +17,7 @@
             <th>AGE</th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model.ListeEtudiants)
         { 
@@ -30,3 +36,42 @@
     </tbody>
 
 </table>
+<div class="modal fade" id="editetudiant" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ajouter un étudiant</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="Lenom">Default</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Nom" aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="Leprenom">Default</span>
+                        </div>
+                        <input type="text" class="form-control" aria-label="Prenom" aria-describedby="inputGroup-sizing-default">
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+            </form>
+        </div>
+        </div>
+    </div>

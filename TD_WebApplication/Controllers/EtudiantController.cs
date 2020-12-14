@@ -1,5 +1,6 @@
 ﻿using EpsiDTO;
 using EtudiantsServices;
+using KeDalle.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace TD_WebApplication.Controllers
 {
-    [Route("api/etudiants")]
+    [Route("api/etudiantss")]
     [ApiController]
     public class EtudiantController : ControllerBase
     {
@@ -19,12 +20,17 @@ namespace TD_WebApplication.Controllers
             _service = etudiant;
         }
 
-        public List<EtudiantDTO> GetEtudiantDTOs()
+      
+
+        [HttpGet]
+        public List<EtudiantDTO> GetEtudiants()
         {
-           // var services = new EtudiantsServicess();
-            return _service.GetEtudiantDTOs();
+            return _service.GetEtudiants().Select(e => new EtudiantDTO
+            {
+                ID = e.ID,
+                Nom = e.Nom,
+                Prenom = e.Prenom
+            }).ToList();
         }
-
-
     }
 }

@@ -1,26 +1,22 @@
-﻿using KeDalle.Model;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace KeDalle
+namespace KeDalle.Model
 {
-    public interface IEpsiContext
+   
+    /*
+    class DevoirContext : DbContext
     {
-        DbSet<Etudiant> etudiants { get; set; }
-        DbSet<DEVOIRS> devs { get; set; }
-
-        int SaveChanges();
-    }
-
-    public class Context : DbContext, IEpsiContext
-    {
-        public DbSet<Etudiant> etudiants { get; set; }
-        public DbSet<DEVOIRS> devs { get; set; }
+        public DbSet<DEVOIRS> devoirs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=tcp:epsi-gury.database.windows.net,1433;Database=Martin;User ID=mathieu;Password=epsi-gury-2020;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             base.OnConfiguring(optionsBuilder);
         }
+
     }
+    */
 }

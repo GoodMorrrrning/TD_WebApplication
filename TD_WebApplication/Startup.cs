@@ -31,12 +31,14 @@ namespace TD_WebApplication
         {
             services.AddHttpContextAccessor();
             services.AddRazorPages();
+
             services.AddTransient<IEtudiantServices, EtudiantsServicess>();
             services.AddTransient<IProxy, Proxy>();
-            services.AddTransient<IEpsiContext, Context>();
             services.AddTransient<IDevoirService, DevService>();
-            
-            
+
+            services.AddSingleton<IEpsiContext, Context>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

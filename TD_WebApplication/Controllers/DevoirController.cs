@@ -1,5 +1,6 @@
 ﻿using EpsiDTO;
 using EtudiantsServices;
+using KeDalle.Model;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using System;
@@ -19,10 +20,10 @@ namespace TD_WebApplication.Controllers
         {
             _serv = ledevoir;
         }
-        public List<DevoirDto> GetDevoirDtos()
+        public List<DevoirDto> GetDevoirs()
         {
             // var services = new EtudiantsServicess();
-            return _serv.GetDevoirDtos();
+            return _serv.GetDevoirs();
         }
 
     }
