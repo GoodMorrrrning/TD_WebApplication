@@ -24,6 +24,17 @@ namespace EtudiantsServices
             _context = ctx;
         }
 
+        public Etudiant AjoutEtudiants(Etudiant etu)
+        {
+            if (etu.ID > 0)
+            {
+                throw new InvalidOperationException(" il existe deja !");
+            }
+
+            _context.etudiants.Add(etu);
+            return etu;
+        }
+
         public Etudiant GetEtudiant(int id)
         {
             var etudiant = _context.etudiants.SingleOrDefault(e => e.ID == id);
@@ -33,6 +44,7 @@ namespace EtudiantsServices
             }
             return etudiant;
         }
+        /*
         public List<Etudiant> Getetudiants()
         {
             var etudiantDal = _context.etudiants.ToList();
@@ -40,7 +52,7 @@ namespace EtudiantsServices
             return etudiantDal;
         }
         
-       
+       */
         public void DeleteEtudiant(int id)
         {
             var etudiant = GetEtudiant(id);
@@ -75,16 +87,7 @@ namespace EtudiantsServices
         }
         
 
-        public Etudiant AjoutEtudiants(Etudiant etu)
-        {
-            if (etu.ID > 0)
-            {
-                throw new InvalidOperationException(" il existe deja !");
-            }
-
-            _context.etudiants.Add(etu);
-            return etu;
-        }
+       
     }
 
     

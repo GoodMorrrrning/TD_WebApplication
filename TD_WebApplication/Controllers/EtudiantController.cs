@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace TD_WebApplication.Controllers
 {
-    [Route("api/etudiantss")]
+    [Route("api/etudiants")]
     [ApiController]
     public class EtudiantController : ControllerBase
     {

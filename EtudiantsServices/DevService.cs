@@ -11,7 +11,7 @@ namespace
 {
     public interface IDevoirService
     {
-        List<DevoirDto> GetDevoirs();
+        List<DEVOIRS> GetDevoirs();
         DEVOIRS getUndevoir(int id);
         DEVOIRS AjouterUnDevoir(DEVOIRS devs);
         DEVOIRS UpdateUnDevoir(DEVOIRS devs);
@@ -38,21 +38,7 @@ namespace
 
       
 
-        public List<DevoirDto> GetDevoirs()
-        {
-            var devoirdal = _context.devs.ToList();
-
-            return devoirdal.Select(e => new DevoirDto
-            {
-                ID = e.ID,
-                NomDevoir = e.NomDevoir,
-                Note = e.Note,
-               
-
-            }).ToList();
-
-
-        }
+       
 
         public DEVOIRS getUndevoir(int id)
         {
@@ -76,6 +62,21 @@ namespace
         {
             var devoir = getUndevoir(id);
             _context.devs.Remove(devoir);
+        }
+
+        List<DEVOIRS> IDevoirService.GetDevoirs()
+        {
+            var devoirdal = _context.devs.ToList();
+
+            return devoirdal.Select(e => new DEVOIRS
+            {
+                ID = e.ID,
+                NomDevoir = e.NomDevoir,
+                Note = e.Note,
+
+
+            }).ToList();
+
         }
     }
 }

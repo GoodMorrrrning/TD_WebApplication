@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace TD_WebApplication.Controllers
 {
-    [Route("api/etudiants")]
+    [Route("api/etudiant")]
     [ApiController]
     public class EtudiantSSController : ControllerBase
     {
@@ -31,13 +31,14 @@ namespace TD_WebApplication.Controllers
             }
             var etudiantajout = new Etudiant
             {
+                ID = etu.ID,
                 Nom = etu.Nom,
                 AGE = etu.AGE,
                 Prenom = etu.Prenom
             };
             _service.AjoutEtudiants(etudiantajout);
             _context.SaveChanges();
-            return GetEtudiant(etu.ID);
+            return GetEtudiant(etudiantajout.ID);
         }
 
         [HttpGet]
@@ -63,6 +64,8 @@ namespace TD_WebApplication.Controllers
             }
             var etudiantupdate = new Etudiant
             {
+
+                ID = etu.ID,
                 Nom = etu.Nom,
                 Prenom = etu.Prenom,
                 AGE = etu.AGE

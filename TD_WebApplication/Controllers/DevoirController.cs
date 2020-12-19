@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace TD_WebApplication.Controllers
 {
-    [Route("api/LesDevoirs")]
+    [Route("api/lesdevoirs")]
     [ApiController]
     public class DevoirController : ControllerBase
     {
@@ -20,10 +20,17 @@ namespace TD_WebApplication.Controllers
         {
             _serv = ledevoir;
         }
+        [HttpGet]
         public List<DevoirDto> GetDevoirs()
         {
             // var services = new EtudiantsServicess();
-            return _serv.GetDevoirs();
+            return _serv.GetDevoirs().Select(e => new DevoirDto
+            {
+                ID = e.ID,
+                NomDevoir = e.NomDevoir,
+                Note = e.Note
+
+            }).ToList();
         }
 
     }

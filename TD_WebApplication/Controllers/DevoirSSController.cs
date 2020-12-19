@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace TD_WebApplication.Controllers
 {
-    [Route("api/LesDevoirs")]
+    [Route("api/ledevoir")]
     [ApiController]
     public class DevoirSSController : ControllerBase
     {
@@ -46,7 +46,10 @@ namespace TD_WebApplication.Controllers
                 NomDevoir = devs.NomDevoir,
                 Note = devs.Note
             };
-            return devs;
+            _serv.AjouterUnDevoir(devoirs);
+            _context.SaveChanges();
+
+            return getUndevoir(devoirs.ID);
         }
         [HttpPut]
         public DevoirDto UpdateUnDevoir(DevoirDto devs)
@@ -57,6 +60,7 @@ namespace TD_WebApplication.Controllers
             }
             var devoir = new DEVOIRS
             {
+                ID = devs.ID,
                 NomDevoir = devs.NomDevoir,
                 Note = devs.Note,
 
@@ -73,11 +77,7 @@ namespace TD_WebApplication.Controllers
             _context.SaveChanges();
         }
 
-        public List<DevoirDto> GetDevoirs()
-        {
-            // var services = new EtudiantsServicess();
-            return _serv.GetDevoirs();
-        }
+      
 
     }
 }
